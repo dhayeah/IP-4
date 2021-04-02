@@ -1,0 +1,370 @@
+<html>
+
+<head>
+    <title>
+        Registration.in
+    </title>
+     <style>
+         *{
+             margin: 0px;
+             padding: 0px;
+             
+         }
+         .heading,.regform{
+             margin-left: 10%;
+             
+         }
+         body
+         {
+             background-image: url(img/farm.jpg);
+             background-position: center;
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-size: cover;
+             font-family: sans-serif;
+             margin-top: 40px;
+         }
+         .heading
+         {
+             width: 800px;
+             height: 60px;
+             padding: 10px 0px 0px 0px;
+             background-color: rgb(0,0,0,0.7);
+             color: white;
+             text-align: center;
+             border-radius: 10px 10px 0px 0px;
+          
+         }
+         .regform
+         {
+           border-radius: 0px 0px 10px 10px;
+             width: 800px;
+             color: aliceblue;
+             background-color: rgb(0,0,0,0.5);
+             
+         }
+         label
+         {
+             margin-left: 40px;
+         }
+         .sal input{
+             margin-left: 40px;
+             padding: 10px;
+         }
+         .sal
+         {
+             padding: 30px 0px 20px 0px;
+         }
+         .lang input
+         {
+             padding: 10px 0px 20px 30px;
+             margin-left: 40px;
+         }
+        .addexp 
+         {
+             margin: 40px 0px 50px 40px;
+        
+             
+         }
+         textarea
+         {
+             font-size: 15px;
+            
+         }
+         .name input
+         {
+             padding-left: 20px;
+             margin-bottom: 20px;
+             margin-left: 60px;
+             width: 200px;
+             height: 30px;
+             
+         }
+         .phone input
+         {
+             padding-left: 20px;
+             margin-left: 57px;;
+             width: 200px;
+             height: 30px;
+             
+         }
+         .uname input
+         {
+             padding-left: 20px;
+             margin: 20px 0px 20px 26px;
+             margin-left: ;
+             width: 200px;
+             height: 30px;
+         }
+         
+         .pass input
+         {
+              padding-left: 20px;
+             margin: 0px 0px 10px 33px;
+             margin-left: ;
+             width: 200px;
+             height: 30px;
+         }
+         
+        .addexp textarea
+         {
+             padding: 20px;
+             margin: 20px 0px 10px 33px;
+         }
+        
+        button,#post
+         {
+           padding: 7px;
+             width: 90px;
+             position: relative;
+             left: 50px;
+             margin:0px 25px 40px 25px;
+             background-color: grey;
+             color:white;
+            
+         }
+         button,input,textarea
+         {
+             border-radius: 4px;
+         }
+         input:focus,textarea:focus
+         {
+            background-color:c7f9cc;
+         }
+         #check_err,#radio_err
+         {
+             margin-left: 100px;
+             color: red;
+         }
+         
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+    <h1>Registration form</h1>
+    </div>
+    <div class="regform">
+    <form class="regis" id="form" onsubmit="return check(this)" action ="Display" method = "GET">
+       <div class="sal">
+        <label>* Salutation</label>
+        <input id="salutation" type="radio"  name="s1" value="Dr">
+        <span>Dr.</span>
+        <input id="salutation" type="radio" name="s1" value="Mr">
+        <span>Mr.</span>
+        <input id="salutation" type="radio" name="s1" value="Mrs">
+        <span>Mrs.</span>
+        <input id="salutation" type="radio" name="s1" value="Miss">
+        <span>Miss.</span><br>
+           <span id="radio_err"></span><br><br>
+        </div>
+        <div class="name">
+        <label>* Name</label>
+        <input type="text" id="name" onblur="checkname(this.value)" name="formname">
+        <span id="name_error"></span><br>
+        </div>
+        <div class="phone">
+        <label>* Phone</label>
+        <input type="text" id="phone" placeholder="+91-7985685468" onblur="checkphone(this.value)" name="fphno">
+        <span id="phone_err"></span><br>
+        </div>
+        <div class="pwd">
+        <div class="uname">
+        <label>* User name</label>
+        <input type="text" id="uname" onblur="check_uname(this.value)" name="funame">
+        <span id="un_err"></span><br>
+            </div>
+            <div class="pass">
+        <label id="p1">* Password
+        <input type="password" id="password" onKeypress="checkpass(this.value)" name="fpass">
+            <span id="pwd_err"></span></label><br>
+        <div style="color: gray;margin-left:150px;">8 characters or longer with atleast one number is safest</div><br>
+       
+        <label>* Enter your password again</label>
+     
+        <input type="password" id="passwordagain" onblur="passagain(this.value)"> <span id="pwd_again"></span><br>
+     
+        <label>* Email</label>
+        <input type="text" id="mail" onblur="checkmail(this.value)" name="femail">
+        <span id="email_err"></span><br>
+
+        <label>* DOB</label>
+        <input type="date" id="dob" min="1970-02-01" max="2001-02-25" name="fdate"><br>
+        <span id="dob_err"></span><br>
+
+        <label>* Photo</label>
+        <input type="file" accept="image/jpeg,image/jpg,image/png" name="fimage">
+        <br>
+        </div>
+        </div>
+        <div class="lang">
+        <label>* Languages Known</label>
+        <input type="checkbox" name="language" value="English">
+        <span>English</span>
+
+        <input type="checkbox" name="language" value="Tamil">
+        <span>Tamil</span>
+        <input type="checkbox" name="language" value="French">
+        <span>French</span>
+        <input type="checkbox" name="language" value="Hindi">
+        <span>Hindi</span>
+        <input type="checkbox" name="language" value="Others">
+        <span>Others</span><br>
+        <span id="check_err"></span><br>
+      
+          </div>
+          <div class="addexp">
+        <label> Additional Expertise</label><br>
+
+        <textarea id="add-exp" rows="4" cols="70" name="fexpert">
+        </textarea>
+        <br>
+        </div>
+         <input type="submit" id="post" value ="SUBMIT">
+      <!--  <button type="submit" id="post">SUBMIT</button>  -->
+        <button type="reset" id="clear">RESET</button>
+
+      
+    </form>
+    </div>
+
+    <script>
+        var unamelist = ["dhaya666", "hep", "hello123"];
+        var nameexp = /^[A-Z]\.?[A-Z]?\.?[A-Za-z\s]+[A-Za-z]*$/;
+        var emailexp = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$/;
+        var phoneexp = /^\+[1-9]{2}[-][0-9]{10}/;
+        var upper = /.*[A-Z]+.*/;
+        var lower = /.*[a-z]+.*/;
+        var numbers = /.*[0-9]+.*/;
+        var special=/.*[!@#$?]+.*/;
+        var stronglen=/[a-zA-Z0-9!@#$%?]{8,}/;
+        var modlen=/[a-zA-Z0-9!@#$%?]{6,7}/;  
+        var weaklen=/[a-zA-Z0-9!@#$%?]{4,5}/;
+
+        function checkmail(val) {
+            if (emailexp.test(val) == false) {
+                document.getElementById("email_err").innerHTML = "*Invalid email";
+
+            } else {
+
+                document.getElementById("email_err").innerHTML = " ";
+            }
+               if(val=="")
+                {
+                    document.getElementById("email_err").innerHTML = " *Need to be filled";
+                }
+
+        }
+        
+        function passagain(val)
+        {
+            if(val!=document.getElementById("password").value)
+                {
+                    document.getElementById("pwd_again").innerHTML = " *not matched";
+                }
+            else{
+                document.getElementById("pwd_again").innerHTML = " ";
+            }
+             if(val=="")
+                {
+                    document.getElementById("pwd_again").innerHTML = " *Need to be filled";
+                }
+
+            
+        }
+
+        function check_uname(val) {
+              document.getElementById("un_err").innerHTML = " ";
+            for (i = 0; i < unamelist.length; i++) {
+                if (unamelist[i] == val) {
+                    document.getElementById("un_err").innerHTML = "*User name already exists";
+
+                } 
+            }
+             if(val=="")
+                {
+                    document.getElementById("un_err").innerHTML = " *Need to be filled";
+                }
+
+        }
+
+        function checkphone(val) {
+            if (phoneexp.test(val) == false) {
+                document.getElementById("phone_err").innerHTML = "*Invalid phone-number";
+
+            } else {
+                document.getElementById("phone_err").innerHTML = " ";
+            }
+            if(val=="")
+                {
+                    document.getElementById("phone_err").innerHTML = " *Need to be filled";
+                }
+        }
+
+        function checkname(val) {
+            if (nameexp.test(val) == false) {
+                document.getElementById("name_err").innerHTML = "*Invalid name";
+            } else {
+                document.getElementById("name_err").innerHTML = " ";
+
+            }
+            if(val=="")
+                {
+                    document.getElementById("name_err").innerHTML = " *Need to be filled";
+                }
+        }
+        
+
+        function checkpass(val) {
+document.getElementById("pwd_err").innerHTML = " ";           
+            if (stronglen.test(val) == true && upper.test(val)==true && lower.test(val)==true && special.test(val)==true && numbers.test(val)==true) {
+                document.getElementById("pwd_err").innerHTML = "strong";
+                 document.getElementById("pwd_err").style.color="green";
+            } 
+            else if (modlen.test(val) == true && upper.test(val)==true && lower.test(val)==true &&  numbers.test(val)==true) {
+                document.getElementById("pwd_err").innerHTML = "moderate";
+                document.getElementById("pwd_err").style.color="orange";
+            } 
+            else if(weaklen.test(val) == true && lower.test(val)==true) {
+                document.getElementById("pwd_err").innerHTML = "weak";
+                 document.getElementById("pwd_err").style.color="yellow";
+
+            }
+            else
+                {
+                 document.getElementById("pwd_err").innerHTML = "very weak";  document.getElementById("pwd_err").style.color="red";
+                }
+            if(val=="")
+                {
+                    document.getElementById("pwd_err").innerHTML = " *Need to be filled";
+                }
+        }
+  
+
+        function check(letters) {
+
+           
+            var x=document.getElementsByName("s1");
+            if(x[0].checked || x[1].checked || x[2].checked || x[3].checked)
+                {
+                    document.getElementById("radio_err").innerHTML = " ";
+                }
+            else{
+                  document.getElementById("radio_err").innerHTML = " *not selected";
+                  return false;
+            }
+            var y=document.getElementsByName("language");
+            if(y[0].checked || y[1].checked || y[2].checked || y[3].checked)
+                {
+                    document.getElementById("check_err").innerHTML = " ";
+                }
+             else{
+                  document.getElementById("check_err").innerHTML = " *atleast select 1";
+                 return false;
+            }
+              return true;
+          }
+        
+    </script>
+
+</body></html>
