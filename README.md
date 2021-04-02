@@ -6,4 +6,4 @@ html
 css 
 javascript
 
-tomcat to host
+apache tomcat server
